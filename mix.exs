@@ -27,7 +27,7 @@ defmodule Manticore.MixProject do
 
   defp escript_config do
     [
-      main_module: Manticore,
+      main_module: Manticore.CLI,
       path: "_build/escript/manticore"
     ]
   end
