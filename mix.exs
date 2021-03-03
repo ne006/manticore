@@ -21,7 +21,8 @@ defmodule Manticore.MixProject do
   defp deps do
     [
       {:httpoison, "~> 1.8"},
-      {:jason, "~> 1.2"}
+      {:jason, "~> 1.2"},
+      {:mox, "~> 1.0", only: :test}
     ]
   end
 
