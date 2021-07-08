@@ -9,6 +9,7 @@ defmodule Manticore.Request do
         }
 
   @spec execute(__MODULE__.t()) :: map()
+  @callback execute(__MODULE__.t()) :: map()
 
   def execute(%__MODULE__{} = request) do
     start = :os.system_time(:milli_seconds)
