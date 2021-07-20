@@ -1,7 +1,8 @@
 defmodule Manticore.CLI do
   def main(argv) do
     {opts, _, _} =
-      OptionParser.parse(argv,
+      OptionParser.parse(
+        argv,
         strict: [prey: :string, fangs: :integer, venom: :string, store: :string]
       )
 
