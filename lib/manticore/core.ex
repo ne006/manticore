@@ -16,7 +16,7 @@ defmodule Manticore.Core do
       |> Enum.map(fn reqs -> Sting.execute(requests: reqs) end)
       |> Enum.concat()
 
-    report = Prey.digest(responses)
+    report = Prey.digest(responses, fangs)
 
     %{
       report: report,

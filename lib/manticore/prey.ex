@@ -1,5 +1,5 @@
 defmodule Manticore.Prey do
-  def digest(requests \\ []) do
+  def digest(requests \\ [], fangs \\ 1) do
     sorted_requests =
       %{
         success: fn req -> Enum.member?(200..299, req.status_code) end,
@@ -42,5 +42,22 @@ defmodule Manticore.Prey do
           end
         end)
     }
+    |> (fn stats ->
+          Map.put(
+            stats,
+            :rps,
+            stats[:execution_time]
+            |> Enum.map(fn {key, timings} ->
+              case timings[:avg] do
+                0.0 ->
+                  {key, 0.000}
+
+                time ->
+                  {key, (1000 * fangs / time) |> Float.round(3)}
+              end
+            end)
+            |> Enum.into(%{})
+          )
+        end).()
   end
 end

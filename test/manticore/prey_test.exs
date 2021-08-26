@@ -70,5 +70,14 @@ defmodule Manticore.PreyTest do
         total: %{min: 0, max: 80, avg: 33.6}
       }
     )
+
+    assert(
+      report[:rps] == %{
+        success: 24.096,
+        neutral: 12.500,
+        error: 400.000,
+        total: 29.762
+      }
+    )
   end
 end
